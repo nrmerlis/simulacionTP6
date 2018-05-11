@@ -26,6 +26,9 @@ namespace simulacion_odontologia_tp6
 
         double ppa;
 
+        double pecU;
+        double ptoU;
+
         int n;
 
         double[] tc;
@@ -54,11 +57,13 @@ namespace simulacion_odontologia_tp6
             this.n = n;
             t = 0;
             tpll = 0;
-            tf = 330;
+            tf = 100000;
 
             cpa = 0;
 
             ppa = 0;
+            pecU = 0;
+            ptoU = 0;
 
             tc = new double[n];
             pec = new double[n];
@@ -187,30 +192,26 @@ namespace simulacion_odontologia_tp6
             } while (t <= tf);
             for (int c=0;c<n;c++)
             {
-                pec[c] = ste[c] / nt[c];
-                pto[c] = (sto[c] * 100) / t;
-                ppa = double.Parse((cpa).ToString()) / nt.Sum();
-
+                // pec[c] = ste[c] / nt[c];
+                //pto[c] = (sto[c] * 100) / t;
                 //ppa[c] = (cpa* 100) / nt[c];
+                ppa = double.Parse((cpa).ToString()) / nt.Sum();
+                pecU = ste.Sum() / nt.Sum() ;
+                ptoU = sto.Sum() * 100 / t;
+               
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            startSimulation(int.Parse(numericUpDown1.Value.ToString()));
-            Console.WriteLine("Nueva simulacion");
-            for (int c = 0; c < int.Parse(numericUpDown1.Value.ToString()); c++)
-            {
-
-                
-                Console.WriteLine("Pec["+c+"]="+pec[c]);
-            Console.WriteLine("Pto["+c+"]="+pto[c]);
-               
-                // Console.WriteLine("Ppa["+c+"]="+ppa[c]);
-
-            }
+            string n = numericUpDown1.Value.ToString();
+            startSimulation(int.Parse(n));
+            Console.WriteLine("Nueva simulacion con " + n+" medicos");
+            Console.WriteLine("Pec=" + pecU);
+            Console.WriteLine("Pto=" + ptoU);
             Console.WriteLine("Ppa=" + ppa);
+           
+            
             Console.WriteLine("Fin simulacion");
         }
     }
