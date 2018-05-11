@@ -24,13 +24,15 @@ namespace simulacion_odontologia_tp6
 
         int cpa;
 
+        double ppa;
+
         int n;
 
         double[] tc;
 
         double[] pec;
         double[] pto;
-        double[] ppa;
+        //double[] ppa;
 
         double[] sto;
         double[] ste;
@@ -52,14 +54,16 @@ namespace simulacion_odontologia_tp6
             this.n = n;
             t = 0;
             tpll = 0;
-            tf = 3300;
+            tf = 330;
 
             cpa = 0;
+
+            ppa = 0;
 
             tc = new double[n];
             pec = new double[n];
             pto = new double[n];
-            ppa = new double[n];
+            //ppa = new double[n];
 
             sto = new double[n];
             ste = new double[n];
@@ -71,7 +75,7 @@ namespace simulacion_odontologia_tp6
                 tc[i] = 0;
                 pec[i] = 0;
                 pto[i] = 0;
-                ppa[i] = 0;
+                //ppa[i] = 0;
 
                 sto[i] = 0;
                 ste[i] = 0;
@@ -95,7 +99,7 @@ namespace simulacion_odontologia_tp6
             double y = ((39.399 - 29.495) *r) + 29.495;
             if (y >= 30 && y <= 40)
             {
-                return double.Parse(y.ToString("0.00"));
+                return y;
             }
             return getTaC(getRandom());
         }
@@ -104,7 +108,7 @@ namespace simulacion_odontologia_tp6
             double y = ((59.495 - 54.547) * r) + 54.547;
             if (y >= 55 && y <= 60)
             {
-                return double.Parse(y.ToString("0.00"));
+                return y;
             }
             return getTaA(getRandom());
         }
@@ -144,16 +148,16 @@ namespace simulacion_odontologia_tp6
                     if (r<=0.65)
                     {
                         tac = getTaC(getRandom());
-                        if(t<=tc[i])
+                        if(t>=tc[i])
                         {
-                           
+                            
                             sto[i] = sto[i] + (t - tc[i]);
                             tc[i] = t + tac;
                         }
                         else
                         {
 
-                           
+                            
                             ste[i] = ste[i] + (tc[i]-t);
                             tc[i] = tc[i] + tac;
 
@@ -163,7 +167,7 @@ namespace simulacion_odontologia_tp6
                     else
                     {
                         taa = getTaA(getRandom());
-                        if (t <= tc[i])
+                        if (t >= tc[i])
                         {
                            
                             sto[i] = sto[i] + (t - tc[i]);
@@ -171,7 +175,8 @@ namespace simulacion_odontologia_tp6
                         }
                         else
                         {
-                           
+
+                            
                             ste[i] = ste[i] + (tc[i] - t);
                             tc[i] = tc[i] + taa;
 
@@ -184,7 +189,9 @@ namespace simulacion_odontologia_tp6
             {
                 pec[c] = ste[c] / nt[c];
                 pto[c] = (sto[c] * 100) / t;
-                ppa[c] = (cpa* 100) / nt[c];
+                ppa = double.Parse((cpa).ToString()) / nt.Sum();
+
+                //ppa[c] = (cpa* 100) / nt[c];
             }
         }
 
@@ -199,10 +206,12 @@ namespace simulacion_odontologia_tp6
                 
                 Console.WriteLine("Pec["+c+"]="+pec[c]);
             Console.WriteLine("Pto["+c+"]="+pto[c]);
-            Console.WriteLine("Ppa["+c+"]="+ppa[c]);
                
+                // Console.WriteLine("Ppa["+c+"]="+ppa[c]);
+
             }
-             Console.WriteLine("Fin simulacion");
+            Console.WriteLine("Ppa=" + ppa);
+            Console.WriteLine("Fin simulacion");
         }
     }
 }
