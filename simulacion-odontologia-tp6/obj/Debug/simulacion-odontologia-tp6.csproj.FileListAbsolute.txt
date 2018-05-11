@@ -1,0 +1,10 @@
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\bin\Debug\simulacion-odontologia-tp6.exe.config
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\bin\Debug\simulacion-odontologia-tp6.exe
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\bin\Debug\simulacion-odontologia-tp6.pdb
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion-odontologia-tp6.csprojResolveAssemblyReference.cache
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion_odontologia_tp6.Form1.resources
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion_odontologia_tp6.Properties.Resources.resources
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion-odontologia-tp6.csproj.GenerateResource.Cache
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion-odontologia-tp6.csproj.CoreCompileInputs.cache
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion-odontologia-tp6.exe
+C:\Users\nicolas\source\repos\simulacion-odontologia-tp6\simulacion-odontologia-tp6\obj\Debug\simulacion-odontologia-tp6.pdb
