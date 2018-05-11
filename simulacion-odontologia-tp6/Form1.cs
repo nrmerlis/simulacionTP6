@@ -24,6 +24,8 @@ namespace simulacion_odontologia_tp6
 
         int cpa;
 
+        int n;
+
         double[] tc;
 
         double[] pec;
@@ -47,9 +49,10 @@ namespace simulacion_odontologia_tp6
 
         private void init(int n)
         {
+            this.n = n;
             t = 0;
             tpll = 0;
-            tf = 10;
+            tf = 3300;
 
             cpa = 0;
 
@@ -85,7 +88,7 @@ namespace simulacion_odontologia_tp6
             {
                 return y;
             }
-          return getIa(r);
+          return getIa(getRandom());
         }
         private double getTaC(double r)
         {
@@ -94,7 +97,7 @@ namespace simulacion_odontologia_tp6
             {
                 return double.Parse(y.ToString("0.00"));
             }
-            return getTaC(r);
+            return getTaC(getRandom());
         }
         private double getTaA(double r)
         {
@@ -103,7 +106,7 @@ namespace simulacion_odontologia_tp6
             {
                 return double.Parse(y.ToString("0.00"));
             }
-            return getTaA(r);
+            return getTaA(getRandom());
         }
         //Devuelve random entre 0 y 1
         private double getRandom()
@@ -114,7 +117,7 @@ namespace simulacion_odontologia_tp6
         }
         public bool surrended()
         {
-            bool a = getRandom() <= 0.2 ? true  : false;
+            bool a = getRandom() <= 0.3/this.n ? true  : false;
             if (a)
             {
                 cpa++;
@@ -143,15 +146,17 @@ namespace simulacion_odontologia_tp6
                         tac = getTaC(getRandom());
                         if(t<=tc[i])
                         {
-                            tc[i] = t + tac;
+                           
                             sto[i] = sto[i] + (t - tc[i]);
-                            
+                            tc[i] = t + tac;
                         }
                         else
                         {
-                            tc[i] = tc[i] + tac;
+
+                           
                             ste[i] = ste[i] + (tc[i]-t);
-                            
+                            tc[i] = tc[i] + tac;
+
                         }
                         nt[i] += 1;
                     }
@@ -160,15 +165,16 @@ namespace simulacion_odontologia_tp6
                         taa = getTaA(getRandom());
                         if (t <= tc[i])
                         {
-                            tc[i] = t + taa;
+                           
                             sto[i] = sto[i] + (t - tc[i]);
-                            
+                            tc[i] = t + taa;
                         }
                         else
                         {
-                            tc[i] = tc[i] + taa;
+                           
                             ste[i] = ste[i] + (tc[i] - t);
-                            
+                            tc[i] = tc[i] + taa;
+
                         }
                         nt[i] += 1;
                     }
@@ -176,24 +182,27 @@ namespace simulacion_odontologia_tp6
             } while (t <= tf);
             for (int c=0;c<n;c++)
             {
-                pec[i] = ste[i] / nt[i];
-                pto[i] = (sto[i] * 100) / t;
-                ppa[i] = (ppa[i] * 100) / nt[i];
+                pec[c] = ste[c] / nt[c];
+                pto[c] = (sto[c] * 100) / t;
+                ppa[c] = (cpa* 100) / nt[c];
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            
             startSimulation(int.Parse(numericUpDown1.Value.ToString()));
-
+            Console.WriteLine("Nueva simulacion");
             for (int c = 0; c < int.Parse(numericUpDown1.Value.ToString()); c++)
             {
-            Console.WriteLine("Pec["+c+"]="+pec[c]);
+
+                
+                Console.WriteLine("Pec["+c+"]="+pec[c]);
             Console.WriteLine("Pto["+c+"]="+pto[c]);
             Console.WriteLine("Ppa["+c+"]="+ppa[c]);
+               
             }
-            
+             Console.WriteLine("Fin simulacion");
         }
     }
 }
